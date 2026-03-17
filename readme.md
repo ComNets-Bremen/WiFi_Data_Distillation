@@ -1,43 +1,16 @@
 # Dataset Distillation by Matching Training Trajectories for Wifi data
 
 
-<br>
 
 
 
 This repo contains code for Dataset Distillation by Matching Training Trajectories for WiFi data. 
 
 
-> [**Dataset Distillation by Matching Training Trajectories**](https://georgecazenavette.github.io/mtt-distillation/)<br>
-> [George Cazenavette](https://georgecazenavette.github.io/), [Tongzhou Wang](https://ssnl.github.io/), [Antonio Torralba](https://groups.csail.mit.edu/vision/torralbalab/), [Alexei A. Efros](https://people.eecs.berkeley.edu/~efros/), [Jun-Yan Zhu](https://www.cs.cmu.edu/~junyanz/)<br>
-> CMU, MIT, UC Berkeley<br>
-> CVPR 2022 (Oral)
-
 The task of "Dataset Distillation" is to learn a small number of synthetic images such that a model trained on this set alone will have similar test performance as a model trained on the full real dataset.
 
-<img src='docs/method.gif' width=600>
-
-Our method distills the synthetic dataset by directly optimizing the fake images to induce similar network training dynamics as the full,
-real dataset. We train "student" networks for many iterations on the synthetic data,
-measure the error in parameter space between the "student" and "expert" networks trained on real data,
-and back-propagate through all the student network updates to optimize the synthetic pixels.
 
 
-
-## Wearable ImageNet: Synthesizing Tileable Textures
-
-![Teaser image](docs/texture_teaser.png)
-
-Instead of treating our synthetic data as individual images, we can instead encourage every random crop (with circular padding) on a larger canvas of pixels to induce a good training trajectory. This results in class-based textures that are continuous around their edges.
-
-<img src='docs/penguins1_horizontal.png' width=600>
-
-Given these tileable textures, we can apply them to areas that require such properties, such as clothing patterns.
-
-<img src="docs/flamingo_shirt.jpg" width="150"><img src="docs/penguin_shirt.jpg" width="150"><img src="docs/parrot_dress.jpg" width="150"><img src="docs/eagle_jacket.jpg" width="150">
-
-Visualizations made using <a href="https://tri3d.in/">FAB3D</a>
-<br>
 
 
 
