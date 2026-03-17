@@ -18,8 +18,8 @@ The task of "Dataset Distillation" is to learn a small number of synthetic image
 
 First, download our repo:
 ```bash
-git clone https://github.com/GeorgeCazenavette/mtt-distillation.git
-cd mtt-distillation
+https://github.com/ComNets-Bremen/WiFi_Data_Distillation.git
+cd WiFi_Data_Distillation
 ```
 
 For an express installation, we include ```.yaml``` files.
@@ -41,7 +41,7 @@ You can then activate your  conda environment with
 conda activate distillation
 ```
 ##### Quadro Users Take Note:
-```torch.nn.DataParallel``` seems to not work on Quadro A5000 GPUs, and this may extend to other Quadro cards.
+```torch.nn.DataParallel``` seems not to work on Quadro A5000 GPUs, and this may extend to other Quadro cards.
 
 If you experience indefinite hanging during training, try running the process with only 1 GPU by prepending ```CUDA_VISIBLE_DEVICES=0``` to the command.
 
@@ -56,9 +56,10 @@ python buffer.py --dataset=widar --model=widar_CNN --train_epochs=100 --num_expe
 
 
 ### Distillation by Matching Training Trajectories
-The following command will then use the buffers we just generated to distill Widar3.0 down to just 10 samples per class:
+The following command will then use the buffers we just generated to distill Widar3.0 down to just 100 samples per class:
 ```bash
-python distill.py --dataset=widar --model=widar_CNN --ipc=10 --syn_steps=20 --expert_epochs=1 --max_start_epoch=1 --zca --lr_img=100 --lr_lr=1e-05 --lr_teacher=0.01 --buffer_path=**/mtt-distillation_Widar/buffers --data_path=**/Widardata2
+python distill.py --dataset=widar --model=widar_CNN --ipc=100 --syn_steps=10 --expert_epochs=2 --max_start_epoch=10 --lr_img=100 --lr_lr=1e-06 --lr_teacher=0.001 --buffer_path=/home/sattarha/data/mtt-distillation_Widar/buffers --data_path=/home/sattarha/data/Widardata2
+
 ```
 
 
