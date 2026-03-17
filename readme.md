@@ -1,9 +1,9 @@
-# Dataset Distillation by Matching Training Trajectories
+# Dataset Distillation by Matching Training Trajectories for Wifi data
 
-### [Project Page](https://georgecazenavette.github.io/mtt-distillation/) | [Paper](https://arxiv.org/abs/2203.11932)
+
 <br>
 
-![Teaser image](docs/all_grid.png)
+
 
 This repo contains code for training expert trajectories and distilling synthetic data from our Dataset Distillation by Matching Training Trajectories paper (CVPR 2022). Please see our [project page](https://georgecazenavette.github.io/mtt-distillation) for more results.
 
