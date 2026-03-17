@@ -18,49 +18,7 @@ import pandas as pd
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-def print_syn_image_change(it, old_images, new_images, num_classes=None, ipc=None):
-    """
-    Compare synthetic images before and after update and print statistics.
-    """
-    diff = new_images - old_images
-    abs_diff = diff.abs()
 
-    mean_old = old_images.mean().item()
-    mean_new = new_images.mean().item()
-    mean_delta = diff.mean().item()
-
-    std_old = old_images.std().item()
-    std_new = new_images.std().item()
-
-    max_abs_change = abs_diff.max().item()
-
-    # L2 norm over whole tensor
-    l2_total = torch.norm(diff.view(-1)).item()
-
-    # L2 per synthetic image
-    l2_per_image = torch.norm(diff.reshape(diff.shape[0], -1), dim=1)
-
-    print(
-        f"[Iteration {it}] "
-        f"mean_old={mean_old:.6f} "
-        f"mean_new={mean_new:.6f} "
-        f"mean_delta={mean_delta:.6e} "
-        f"std_old={std_old:.6f} "
-        f"std_new={std_new:.6f} "
-        f"max_pixel_change={max_abs_change:.6e} "
-        f"L2_total={l2_total:.6e}"
-    )
-
-    preview_n = min(6, len(l2_per_image))
-    print("   L2 change per image:", [float(x) for x in l2_per_image[:preview_n]])
-
-    # optional per-class change
-    if num_classes is not None and ipc is not None:
-        try:
-            per_class_l2 = l2_per_image.view(num_classes, ipc).mean(dim=1)
-            print("   Mean L2 change per class:", [float(x) for x in per_class_l2])
-        except:
-            pass
 
 def main(args):
 
@@ -446,18 +404,8 @@ def main(args):
 
         optimizer_img.step()
         optimizer_lr.step()
-        # -----------------------------
-        # snapshot AFTER update
-        # -----------------------------
-        new_syn_images = image_syn.detach().cpu().clone()
-        if it % 10 == 0:
-            print_syn_image_change(
-            it,
-            old_syn_images,
-            new_syn_images,
-            num_classes=num_classes,
-            ipc=args.ipc
-        )
+
+   
         wandb.log({"Grand_Loss": grand_loss.detach().cpu(),
                    "Start_Epoch": start_epoch})
 
