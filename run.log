@@ -1,0 +1,18 @@
+wandb: ERROR api_key not configured (no-tty). call wandb.login(key=[your_api_key])
+hello
+{'Clap': 0, 'Draw-O(H)': 1, 'Draw-Zigzag(H)': 2, 'Push&Pull': 3, 'Slide': 4, 'Sweep': 5}
+{'Clap': 0, 'Draw-O(H)': 1, 'Draw-Zigzag(H)': 2, 'Push&Pull': 3, 'Slide': 4, 'Sweep': 5}
+Traceback (most recent call last):
+  File "/data/sattarha/mtt-distillation_Widar/distill_tgdd.py", line 285, in <module>
+    main(args)
+  File "/data/sattarha/mtt-distillation_Widar/distill_tgdd.py", line 49, in main
+    wandb.init(project="DatasetDistillation", job_type="Run", config=vars(args))
+  File "/home/sattarha/data/miniconda3/envs/distillation/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 951, in init
+    wi.setup(kwargs)
+  File "/home/sattarha/data/miniconda3/envs/distillation/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 208, in setup
+    wandb_login._login(
+  File "/home/sattarha/data/miniconda3/envs/distillation/lib/python3.9/site-packages/wandb/sdk/wandb_login.py", line 284, in _login
+    wlogin.prompt_api_key()
+  File "/home/sattarha/data/miniconda3/envs/distillation/lib/python3.9/site-packages/wandb/sdk/wandb_login.py", line 219, in prompt_api_key
+    raise UsageError("api_key not configured (no-tty). call " + directive)
+wandb.errors.UsageError: api_key not configured (no-tty). call wandb.login(key=[your_api_key])
