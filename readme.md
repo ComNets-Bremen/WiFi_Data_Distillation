@@ -5,7 +5,7 @@
 
 
 
-This repo contains code for training expert trajectories and distilling synthetic data from our Dataset Distillation by Matching Training Trajectories paper (CVPR 2022). Please see our [project page](https://georgecazenavette.github.io/mtt-distillation) for more results.
+This repo contains code for Dataset Distillation by Matching Training Trajectories for WiFi data. 
 
 
 > [**Dataset Distillation by Matching Training Trajectories**](https://georgecazenavette.github.io/mtt-distillation/)<br>
@@ -49,7 +49,7 @@ git clone https://github.com/GeorgeCazenavette/mtt-distillation.git
 cd mtt-distillation
 ```
 
-For an express instillation, we include ```.yaml``` files.
+For an express installation, we include ```.yaml``` files.
 
 If you have an RTX 30XX GPU (or newer), run
 
@@ -91,12 +91,16 @@ python distill.py --dataset=widar --model=widar_CNN --ipc=10 --syn_steps=20 --ex
 
 
 ## Acknowledgments
-We would like to thank Alexander Li, Assaf Shocher,  Gokul Swamy, Kangle Deng, Ruihan Gao, Nupur Kumari, Muyang Li, Gaurav Parmar, Chonghyuk Song, Sheng-Yu Wang, and Bingliang Zhang as well as Simon Lucey's Vision Group at the University of Adelaide for their valuable feedback. This work is supported, in part, by the NSF Graduate Research Fellowship under Grant No. DGE1745016 and grants from J.P. Morgan Chase, IBM, and SAP. Our code is adapted from https://github.com/VICO-UoE/DatasetCondensation
+Our work is implemented based on the following projects. We really appreciate their excellent open-source works!
+https://georgecazenavette.github.io/mtt-distillation/
+https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark/tree/main
+
 
 ## Related Work
 <ol>
 <li>
-    Tongzhou Wang et al. <a href="https://ssnl.github.io/dataset_distillation/">"Dataset Distillation"</a>, in arXiv preprint 2018
+    
+George Cazenavette et al. <a href="https://georgecazenavette.github.io/mtt-distillation/">"Dataset Distillation"</a>, in arXiv preprint 2018
 </li>
 <li>
     Bo Zhao et al. <a href="https://arxiv.org/abs/2006.05929">"Dataset Condensation with Gradient Matching"</a>, in ICLR 2020
